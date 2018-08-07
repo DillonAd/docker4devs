@@ -3,11 +3,7 @@ services:
   api:
     image: microsoft/dotnet:sdk
     volumes:
-      - type: bind
-        source: ./api/
-        target: /app
-        volume: 
-          nocopy: true
+      - ./api/:/app
     entrypoint: dotnet watch --project /app/api.csproj run
     ports:
       - "5000:5000"
