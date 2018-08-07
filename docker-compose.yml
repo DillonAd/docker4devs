@@ -4,9 +4,17 @@ services:
     image: microsoft/dotnet:sdk
     volumes:
       - ./api/:/app
-    entrypoint: dotnet watch --project /app/api.csproj run
     ports:
       - "5000:5000"
+    entrypoint: dotnet watch --project /app/api.csproj run
+  web:
+    image: teracy/angular-cli
+    working_dir: /app
+    volumes:
+      - ./web/docker4devs/:/app
+    ports:
+      - "4200:4200"
+    entrypoint: ng serve --watch --host 0.0.0.0 --port 4200
 
   # db:
   #   image: microsoft/mssql-server-linux
