@@ -7,6 +7,9 @@ namespace api
     {
         public DbSet<Value> Values { get; set; }
 
-        public ValueContext(DbContextOptions<ValueContext> options) : base(options) { }
+        public ValueContext(DbContextOptions<ValueContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
     }
 }

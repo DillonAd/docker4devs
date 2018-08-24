@@ -22,4 +22,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_PID=Express
+      - MSSQL_DB=docker4devDB
+      - MSSQL_USER=sa
+      - MSSQL_PASSWORD=correctHorseBatteryStaple1
       - SA_PASSWORD=correctHorseBatteryStaple1

@@ -16,7 +16,7 @@ namespace api.Controllers
         public ActionResult<string[]> Get()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ValueContext>()
-                .UseSqlServer(@"Server=db;Database=Express;User ID=sa; Password=correctHorseBatteryStaple1;");
+                .UseSqlServer(@"Server=db;Database=docker4devDB;User Id=sa; Password=correctHorseBatteryStaple1;");
             
             using(var context = new ValueContext(optionsBuilder.Options))
             {
