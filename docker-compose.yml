@@ -2,16 +2,17 @@ version: "3.2"
 services: 
   api:
     image: microsoft/dotnet:sdk
+    working_dir: /app/api/
     volumes:
-      - ./api/:/app
+      - ./api/:/app/api/
     ports:
       - "5000:5000"
-    entrypoint: dotnet watch --project /app/api.csproj run
+    entrypoint: dotnet watch --project /app/api/api.csproj run
   web:
     image: teracy/angular-cli
-    working_dir: /app
+    working_dir: /app/web/
     volumes:
-      - ./web/docker4devs/:/app
+      - ./web/docker4devs/:/app/web/
     ports:
       - "4200:4200"
     entrypoint: ng serve --watch --host 0.0.0.0 --port 4200
