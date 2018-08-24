@@ -25,13 +25,14 @@ namespace api.Controllers
         [HttpGet]
         public ActionResult<string[]> Get()
         {
-            return context.Values.Select(v => v.Name).ToArray();
+            return _context.Values.Select(v => v.Name).ToArray();
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Value value)
         {
-            _context.Values.Add(new Value() { Name = value });
+            _context.Values.Add(value);
+            _context.SaveChanges();
         }
 
         public void Dispose()
