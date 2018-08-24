@@ -15,12 +15,11 @@ services:
     ports:
       - "4200:4200"
     entrypoint: ng serve --watch --host 0.0.0.0 --port 4200
-
-  # db:
-  #   image: microsoft/mssql-server-linux
-  #   ports: 
-  #     - 1433:1433
-  #   environment:
-  #     - ACCEPT_EULA=Y
-  #     - MSSQL_PID=Express
-  #     - SA_PASSWORD=correctHorseBatteryStaple1
+  db:
+    image: microsoft/mssql-server-linux
+    ports: 
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=correctHorseBatteryStaple1
