@@ -9,18 +9,42 @@ namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : ControllerBase, IDisposable
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<string[]> Get()
+        private readonly ValueContext _context;
+
+        public ValuesController()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ValueContext>()
                 .UseSqlServer(@"Server=db;Database=docker4devDB;User Id=sa; Password=correctHorseBatteryStaple1;");
             
-            using(var context = new ValueContext(optionsBuilder.Options))
+            _context = new ValueContext(optionsBuilder.Options);
+        }
+
+        // GET api/values
+        [HttpGet]
+        public ActionResult<string[]> Get()
+        {
+            return context.Values.Select(v => v.Name).ToArray();
+        }
+
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+            _context.Values.Add(new Value() { Name = value });
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if(disposing)
             {
-                return context.Values.Select(v => v.Name).ToArray();
+                _context.Dispose();
             }
         }
     }
