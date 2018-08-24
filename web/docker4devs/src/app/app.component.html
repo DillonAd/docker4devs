@@ -1,3 +1,12 @@
-<li *ngFor="let value of values | async">
-  <ul>{{value}}</ul>
-</li>
+<ul>
+  <li *ngFor="let value of values | async">
+    {{value}}
+  </li>
+</ul>
+<br />
+<br />
+<label>Value: </label>
+<input id="txtNewValue" type="text" [(ngModel)]="value.Name" />
+<br />
+<br />
+<input id="btnAdd" type="button" value="Add" (click)="addValue()"/>
