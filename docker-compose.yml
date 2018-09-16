@@ -8,6 +8,8 @@ services:
     ports:
       - "5000:5000"
     entrypoint: dotnet watch --project /app/api/api.csproj run
+    depends_on:
+      - db
   web:
     image: teracy/angular-cli
     working_dir: /app/web/
@@ -16,6 +18,8 @@ services:
     ports:
       - "4200:4200"
     entrypoint: ng serve --watch --host 0.0.0.0 --port 4200
+    depends_on:
+      - api
   db:
     image: microsoft/mssql-server-linux
     ports: 
