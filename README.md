@@ -19,3 +19,5 @@ Swapping these components out for a container that suits your needs should be fa
 Another big advantage is that this setup is completely platform independant. Team members can work on any operating system they prefer and still have the same setup as everyone else as long as Docker is installed.
 
 One caveat is that since this isn't for deployment all of the runtime dependencies need to be installed. In this example, the `node_modules` need to be restored using either `npm install` or `yarn` before the command to create the Docker images are is given. `dotnet` will do this as part of the standard build and run process.
+
+At the moment, there is an issue with Docker populating the file system events through to the Docker mounted volumes on Windows. To mitigate this, there is a global tool available via the command line. The tool can be downloaded by running `dotnet tool install -g docker-watch` and then running `docker-watch` in the same directory as the `docker-compose.yml` file. The `docker-watch` command must be given after the `docker-compose up` command.
