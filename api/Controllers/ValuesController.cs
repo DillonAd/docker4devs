@@ -19,6 +19,7 @@ namespace api.Controllers
                 .UseSqlServer(@"Server=db;Database=docker4devDB;User Id=sa; Password=correctHorseBatteryStaple1;");
             
             _context = new ValueContext(optionsBuilder.Options);
+            _context.Database.EnsureCreated();
         }
 
         // GET api/values
