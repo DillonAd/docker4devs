@@ -11,3 +11,5 @@ Setting up new developers is a pain, and making sure everyone's development envi
  - Run `docker-compose up`
 
 Voila!
+
+[Blog Post](https://codejanitor.dev/blog/2019/03/29/Docker-for-Developers)
