@@ -24,9 +24,9 @@ namespace api.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<string[]> Get()
+        public ActionResult<Value[]> Get()
         {
-            return _context.Values.Select(v => v.Name).ToArray();
+            return _context.Values.ToArray();
         }
 
         [HttpPost]

@@ -31,7 +31,12 @@ namespace api
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
             
-            services.AddCors();
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:8080");
+                });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
