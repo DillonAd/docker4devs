@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <input type="text" v-model="val" />
-      <input type="button" v-on:click="send" value="Send!" />
+      <form v-on:submit="send">
+        <input type="text" v-model="val" />
+        <input type="submit" value="Send!" />
+      </form>
     </div>
     <div class="row">
       <ul>
@@ -23,8 +25,9 @@ export default {
     };
   },
   methods: {
-    async send() {
-       await new Promise((resolve, reject) => {
+    async send(e) {
+      e.preventDefault();
+      await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         
         xhr.addEventListener("load", () => { resolve(xhr.response); });
