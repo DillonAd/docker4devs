@@ -1,7 +1,7 @@
 version: "3.2"
 services: 
   api:
-    image: microsoft/dotnet:sdk
+    image: mcr.microsoft.com/dotnet/core/sdk:2.1
     working_dir: /app/api/
     volumes:
       - ./api/:/app/api/
@@ -16,8 +16,8 @@ services:
     volumes:
       - ./web/docker4devs/:/app/web/
     ports:
-      - "4200:4200"
-    entrypoint: ng serve --watch --host 0.0.0.0 --port 4200
+      - "8080:8080"
+    entrypoint: npm run serve
     depends_on:
       - api
   db:
