@@ -17,7 +17,7 @@ services:
       - ./web/docker4devs/:/app/web/
     ports:
       - "8080:8080"
-    entrypoint: npm run serve
+    entrypoint: bash -c "npm install && npm run serve"
     depends_on:
       - api
   db:
